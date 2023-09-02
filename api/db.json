@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "author": "andriy",
+      "heading": "Heading",
+      "subHeading": "SubHeading",
+      "section1": "Sec1",
+      "section2": "Sec2",
+      "section3": "Sec3",
+      "sectionHeading": "SecHeading",
+      "createdAt": "2023-09-02T08:51:04.669Z"
+    }
+  ],
+  "comments": [
+    {
+      "content": "Comment A",
+      "user": "Andriy",
+      "date": "2021-06-22",
+      "postId": "1",
+      "id": 1
+    }
+  ]
+}
