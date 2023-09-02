@@ -1,18 +1,7 @@
 const express = require("express");
 const postRouter = express.Router();
-const mysql = require("mysql");
+const db = require('../dal/db')
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "tom",
-  password: "tom",
-  database: "blog",
-});
-
-db.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to MySQL database");
-});
 
 // Define routes for CRUD operations on posts
 postRouter.get("/", (req, res) => {
@@ -124,7 +113,7 @@ postRouter.put("/:postId", (req, res) => {
       section3,
       sectionHeading,
       createdAt,
-      postId
+      postId,
     ],
     (err, result) => {
       if (err) {

@@ -7,6 +7,8 @@ import { Post } from '../../model/post';
 import { Comment } from '../../model/comment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+import { v4 as uuidv4 } from 'uuid';
+
 @Component({
   selector: 'app-add-comment',
   templateUrl: './add-comment.component.html',
@@ -37,6 +39,8 @@ export class AddCommentComponent implements OnInit {
   addComment() {
     this.comment = this.commentForm.value;
     this.comment.date = this.formatCurrentDate();
+    this.comment.id = uuidv4();
+    
     this.api.addCommentByPostId(this.comment, this.post.id).subscribe(
       () => {
         this.modalService.dismissAll();

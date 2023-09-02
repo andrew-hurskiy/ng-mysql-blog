@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Comment } from '../model/comment';
 
-const apiURL = 'http://localhost:3001';
+const apiURL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class CommentService {
 
   addCommentByPostId(comment: Comment, id: any): Observable<Comment> {
     return this.http
-      .post<Comment>(`${apiURL}/posts/${id}/comments`, comment)
+      .post<Comment>(`${apiURL}/post/${id}/comments`, comment)
       .pipe(
         tap((prod: Comment) =>
           this.log(`added comment w/ id=${prod.id} to post w/ id=${id}`),
@@ -24,7 +24,7 @@ export class CommentService {
   }
 
   getCommentsByPostId(postId: any): Observable<Comment[]> {
-    const url = `${apiURL}/posts/${postId}/comments`;
+    const url = `${apiURL}/post/${postId}/comments`;
     return this.http.get<Comment[]>(url).pipe(
       tap(() => this.log(`fetched comments by postId=${postId}`)),
       catchError(this.handleError<Comment[]>('getCommentsByPostId', [])),
@@ -32,7 +32,9 @@ export class CommentService {
   }
 
   deleteCommentById(id: any): Observable<Comment> {
-    const url = `${apiURL}/comments/${id}`;
+    
+    console.log('Delete comment by id')
+    const url = `${apiURL}/comment/${id}`;
     return this.http.delete<Comment>(url).pipe(
       tap((_) => this.log(`deleted comment id=${id}`)),
       catchError(this.handleError<Comment>('deleteComment')),
@@ -40,7 +42,7 @@ export class CommentService {
   }
 
   updateComment(id: any, comment: Comment): Observable<Comment> {
-    const url = `${apiURL}/comments/${id}`;
+    const url = `${apiURL}/comment/${id}`;
     return this.http.put<Comment>(url, comment).pipe(
       tap((_) => this.log(`updated comment id=${id}`)),
       catchError(this.handleError<Comment>('updateComment')),
@@ -48,7 +50,7 @@ export class CommentService {
   }
 
   getCommentById(id: any): Observable<Comment> {
-    const url = `${apiURL}/comments/${id}`;
+    const url = `${apiURL}/comment/${id}`;
     return this.http.get<Comment>(url).pipe(
       tap(() => this.log(`fetched comment by id=${id}`)),
       catchError(this.handleError<Comment>('getCommentById')),

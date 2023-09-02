@@ -56,6 +56,9 @@ export class EditCommentComponent implements OnInit {
     this.isLoading = true;
     const commentId = this.route.snapshot.params.id;
     this.comment.content = this.commentForm.value.content;
+    this.comment.date = new Date()
+      .toISOString()
+      .slice(0, 10)      
     this.api.updateComment(commentId, this.comment).subscribe(
       (res) => {
         this.isSuccess = true;

@@ -1,21 +1,10 @@
 const express = require("express");
 const commentRouter = express.Router({ mergeParams: true });
-const mysql = require("mysql");
+const db = require('../dal/db')
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "tom",
-  password: "tom",
-  database: "blog",
-});
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to MySQL database");
-});
-
-// Define routes for CRUD operations on comments that belong to a post
 commentRouter.get("/", (req, res) => {
+  console.log("Get all comments for specific post...");
   const postId = req.params.postId;
   const query = "SELECT * FROM comments WHERE postId = ?";
 

@@ -1,4 +1,5 @@
 2. Make all CRUD operations work with posts / comments - DOING
+3. Change angular to work with all our endpoints properly.... DOING
 
 
 3. Add Cypress tests
