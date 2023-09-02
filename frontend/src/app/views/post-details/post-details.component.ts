@@ -10,10 +10,9 @@ import { Comment } from '../../model/comment';
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.scss']
+  styleUrls: ['./post-details.component.scss'],
 })
 export class PostDetailsComponent implements OnInit {
-
   post: any = {
     id: '',
     heading: '',
@@ -22,35 +21,40 @@ export class PostDetailsComponent implements OnInit {
     section2: '',
     section3: '',
     sectionHeading: '',
-    createdAt: null
+    createdAt: null,
   };
   comments: Comment[] = [];
   isLoading = true;
 
-  constructor(private route: ActivatedRoute, private apiPost: PostService,
-              private apiComment: CommentService, private modalService: NgbModal) { }
+  constructor(
+    private route: ActivatedRoute,
+    private apiPost: PostService,
+    private apiComment: CommentService,
+    private modalService: NgbModal,
+  ) {}
 
   ngOnInit() {
     this.getPostDetails(this.route.snapshot.params.id);
   }
 
   getPostDetails(id: any) {
-    this.apiPost.getPost(id)
-      .subscribe((data: any) => {
-        this.post = data;
-        console.log('this.post', this.post)
-        this.getCommentsByPostId();
-        this.isLoading = false;
-      });
+    this.apiPost.getPost(id).subscribe((data: any) => {
+      this.post = data;
+      console.log('this.post', this.post);
+      this.getCommentsByPostId();
+      this.isLoading = false;
+    });
   }
 
   getCommentsByPostId() {
-    this.apiComment.getCommentsByPostId(this.post.id)
-      .subscribe((res: any) => {
+    this.apiComment.getCommentsByPostId(this.post.id).subscribe(
+      (res: any) => {
         this.comments = res;
-      }, err => {
+      },
+      (err) => {
         console.log(err);
-      });
+      },
+    );
   }
 
   openModal(content) {
@@ -58,7 +62,6 @@ export class PostDetailsComponent implements OnInit {
   }
 
   closeModal() {
-     this.modalService.dismissAll();
+    this.modalService.dismissAll();
   }
-
 }

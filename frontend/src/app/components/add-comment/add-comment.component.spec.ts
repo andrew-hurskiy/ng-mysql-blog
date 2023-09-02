@@ -11,10 +11,13 @@ describe('AddCommentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddCommentComponent ],
-      imports: [ ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule ]
-    })
-    .compileComponents();
+      declarations: [AddCommentComponent],
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -42,9 +45,20 @@ describe('AddCommentComponent', () => {
     component.commentForm.controls.user.setValue('Axel Rose');
     component.commentForm.controls.content.setValue('I love this test');
     expect(component.commentForm.valid).toBeTruthy();
-    component.post = { id: '1', publish_date: null, description: 'This is a new post', author: '', content: '', title: '' };
+    component.post = {
+      id: '1',
+      publish_date: null,
+      description: 'This is a new post',
+      author: '',
+      content: '',
+      title: '',
+    };
     component.addComment();
-    expect(component.comment).toEqual(jasmine.objectContaining({ user: 'Axel Rose', content: 'I love this test' }));
+    expect(component.comment).toEqual(
+      jasmine.objectContaining({
+        user: 'Axel Rose',
+        content: 'I love this test',
+      }),
+    );
   });
-
 });

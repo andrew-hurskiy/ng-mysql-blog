@@ -37,21 +37,14 @@
           <a href="#" class="btn btn-info">Read more</a>
         </div>
         <div
-          class="
-            card-footer
-            text-muted
-            d-flex
-            justify-content-between
-            bg-transparent
-            border-top-0
-          "
+          class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0"
         >
           <div class="views">
-            <b> {{ post.author | titlecase  }} </b>
+            <b> {{ post.author | titlecase }} </b>
             <span class="text-muted"></span>
           </div>
           <div class="stats">
-            {{ post.createdAt | date: "dd/MM/yyyy" }}
+            {{ post.createdAt | date: 'dd/MM/yyyy' }}
           </div>
         </div>
       </div>

@@ -8,40 +8,38 @@ const apiURL = 'http://localhost:3000/posts/';
 // const apiURL = './../assets/api/db.json';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addPost(payload: any): Observable<Post> {
     const url = `${apiURL}`;
     console.log('During adding post, payload is', payload);
-    
+
     return this.http.post<any>(url, payload).pipe(
-      tap(_ => this.log(`fetched post by payload=${payload}`)),
-      catchError(this.handleError<Post>(`getPost id=${payload}`))
+      tap((_) => this.log(`fetched post by payload=${payload}`)),
+      catchError(this.handleError<Post>(`getPost id=${payload}`)),
     );
   }
 
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(apiURL).pipe(
-        tap(() => this.log('Posts fetched')),
-        catchError(this.handleError('getPosts', []))
-      );
+      tap(() => this.log('Posts fetched')),
+      catchError(this.handleError('getPosts', [])),
+    );
   }
 
   getPost(id: any): Observable<Post> {
     const url = `${apiURL}${id}`;
     return this.http.get<Post>(url).pipe(
-      tap(_ => this.log(`fetched post by id=${id}`)),
-      catchError(this.handleError<Post>(`getPost id=${id}`))
+      tap((_) => this.log(`fetched post by id=${id}`)),
+      catchError(this.handleError<Post>(`getPost id=${id}`)),
     );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       console.error(error); // log to console instead
       this.log(`${operation} failed: ${error.message}`);
 
@@ -52,5 +50,4 @@ export class PostService {
   private log(message: string) {
     console.log(message);
   }
-
 }

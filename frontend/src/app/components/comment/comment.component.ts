@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
 import { Comment } from '../../model/comment';
@@ -6,27 +6,28 @@ import { Comment } from '../../model/comment';
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.scss']
+  styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent {
-
   @Input() comment: Comment = {
     id: '1',
     postId: '1',
     parent_id: null,
     user: '',
     date: null,
-    content: ''
+    content: '',
   };
 
-  constructor(private api: CommentService, private router: Router) { }
+  constructor(
+    private api: CommentService,
+    private router: Router,
+  ) {}
 
   deleteComment() {
-    this.api.deleteCommentById(this.comment.id)
-      .subscribe(() => {
-        this.refresh();
-        this.router.navigate([this.router.url]);
-      });
+    this.api.deleteCommentById(this.comment.id).subscribe(() => {
+      this.refresh();
+      this.router.navigate([this.router.url]);
+    });
   }
 
   editComment() {
@@ -37,5 +38,4 @@ export class CommentComponent {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
   }
-
 }

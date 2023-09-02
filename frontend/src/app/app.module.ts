@@ -23,7 +23,6 @@ import { CreatePostComponent } from './views/create-post/create-post.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgetPwdComponent } from './views/forget-pwd/forget-pwd.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,18 +33,17 @@ import { ForgetPwdComponent } from './views/forget-pwd/forget-pwd.component';
     EditCommentComponent,
     CreatePostComponent,
     LoginComponent,
-    ForgetPwdComponent
+    ForgetPwdComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModalModule, NgbModule,
-    ReactiveFormsModule
+    NgbModalModule,
+    NgbModule,
+    ReactiveFormsModule,
   ],
-  providers: [
-    PostService, CommentService
-  ],
-  bootstrap: [AppComponent]
+  providers: [PostService, CommentService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

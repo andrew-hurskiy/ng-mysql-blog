@@ -1,9 +1,9 @@
 <div class="container login-container">
   <div class="row">
-      <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
     <div class="col-md-6 login-form-1">
-      <h3>Login </h3>
-      <form [formGroup]="loginForm" >
+      <h3>Login</h3>
+      <form [formGroup]="loginForm">
         <div class="form-group">
           <input
             type="text"
@@ -23,15 +23,20 @@
           />
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="!loginForm.valid" >Login</button>
-
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="submit()"
+            [disabled]="!loginForm.valid"
+          >
+            Login
+          </button>
         </div>
         <div class="form-group">
           <a (click)="forgetPwd()" class="ForgetPwd">Forget Password?</a>
         </div>
       </form>
-    </div> 
+    </div>
     <div class="col-md-3"></div>
-
   </div>
 </div>

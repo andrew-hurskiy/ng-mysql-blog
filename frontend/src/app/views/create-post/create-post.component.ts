@@ -1,14 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PostService } from "src/app/services/post.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PostService } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 
-
 @Component({
-  selector: "app-create-post",
-  templateUrl: "./create-post.component.html",
-  styleUrls: ["./create-post.component.scss"],
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.scss'],
 })
 export class CreatePostComponent implements OnInit {
   blogForm: FormGroup;
@@ -16,7 +15,7 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly api: PostService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     this.initForm();
   }
@@ -24,29 +23,31 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {}
 
   initForm() {
-    this.author = JSON.parse(localStorage.getItem("user"));
-    let createdAtMysqlFormat = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    
-    
+    this.author = JSON.parse(localStorage.getItem('user'));
+    let createdAtMysqlFormat = new Date()
+      .toISOString()
+      .slice(0, 19)
+      .replace('T', ' ');
+
     this.blogForm = this.fb.group({
       id: [uuidv4()],
       author: [this.author],
-      heading: ["", Validators.required],
-      subHeading: ["", Validators.required],
-      section1: [""],
-      section2: [""],
-      section3: [""],
-      sectionHeading: [""],
+      heading: ['', Validators.required],
+      subHeading: ['', Validators.required],
+      section1: [''],
+      section2: [''],
+      section3: [''],
+      sectionHeading: [''],
       createdAt: [createdAtMysqlFormat],
     });
   }
 
   submit() {
-    console.log("formGroup", this.blogForm.value);
+    console.log('formGroup', this.blogForm.value);
     this.api.addPost(this.blogForm.value).subscribe((res) => {
-      console.log("res", res);
-      alert("Blog created!");
-      this.router.navigateByUrl("/home");
+      console.log('res', res);
+      alert('Blog created!');
+      this.router.navigateByUrl('/home');
     });
   }
 }

@@ -4,20 +4,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-forget-pwd',
   templateUrl: './forget-pwd.component.html',
-  styleUrls: ['./forget-pwd.component.scss']
+  styleUrls: ['./forget-pwd.component.scss'],
 })
 export class ForgetPwdComponent implements OnInit {
-
   resetForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder
-  ) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.resetForm = this.fb.group({
-      email: ['', Validators.required]
-    })
+      email: ['', Validators.required],
+    });
   }
 
   submit() {

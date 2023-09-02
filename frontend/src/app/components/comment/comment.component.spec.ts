@@ -13,10 +13,13 @@ describe('CommentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentComponent, EditCommentComponent ],
-      imports: [ HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule ]
-    })
-    .compileComponents();
+      declarations: [CommentComponent, EditCommentComponent],
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,7 +33,14 @@ describe('CommentComponent', () => {
   });
 
   it('should remove comment upon button click', () => {
-    component.comment = { id: 10, postId: 1, parent_id: null, date: null, user: null, content: 'This is a fresh comment' };
+    component.comment = {
+      id: 10,
+      postId: 1,
+      parent_id: null,
+      date: null,
+      user: null,
+      content: 'This is a fresh comment',
+    };
     fixture.detectChanges();
 
     fixture.debugElement
@@ -39,5 +49,4 @@ describe('CommentComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.innerHTML).toContain('This is a fresh comment');
   });
-
 });

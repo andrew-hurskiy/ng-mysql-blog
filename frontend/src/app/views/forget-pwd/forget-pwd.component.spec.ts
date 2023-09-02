@@ -8,9 +8,8 @@ describe('ForgetPwdComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgetPwdComponent ]
-    })
-    .compileComponents();
+      declarations: [ForgetPwdComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

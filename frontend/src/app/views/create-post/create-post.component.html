@@ -8,7 +8,9 @@
         </div>
         <form [formGroup]="blogForm" (ngSubmit)="submit()">
           <div class="card">
-            <label for="exampleFormControlTextarea1">Heading <span style="color: red;" > * </span> </label>
+            <label for="exampleFormControlTextarea1"
+              >Heading <span style="color: red"> * </span>
+            </label>
             <input
               class="form-control form-control-lg"
               type="text"
@@ -16,7 +18,9 @@
               formControlName="heading"
             />
             <br />
-            <label for="exampleFormControlTextarea1">Sub Heading <span style="color: red;" > * </span></label>
+            <label for="exampleFormControlTextarea1"
+              >Sub Heading <span style="color: red"> * </span></label
+            >
             <input
               class="form-control form-control-lg"
               type="text"
@@ -66,11 +70,20 @@
               ></textarea>
             </div>
 
-            <br>
-            <label for="exampleFormControlTextarea1"><span style="color: red;" > * </span> Mark fields are required</label>
-            
+            <br />
+            <label for="exampleFormControlTextarea1"
+              ><span style="color: red"> * </span> Mark fields are
+              required</label
+            >
+
             <div class="btn-group pt-4" aria-label="Main buttons">
-              <button type="submit" class="btn btn-primary" [disabled]="!blogForm.valid" >Submit Blog</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!blogForm.valid"
+              >
+                Submit Blog
+              </button>
             </div>
           </div>
         </form>

@@ -1,4 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  waitForAsync,
+} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -10,10 +15,9 @@ describe('HomeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
-      imports: [ RouterTestingModule, HttpClientTestingModule ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,5 +34,4 @@ describe('HomeComponent', () => {
     expect(component.isLoading).toBeTruthy();
     expect(component.posts.length).toEqual(0);
   });
-
 });

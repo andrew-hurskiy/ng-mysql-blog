@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PostDetailsComponent } from './post-details.component';
 import { AddCommentComponent } from '../../components/add-comment/add-comment.component';
 import { CommentComponent } from '../../components/comment/comment.component';
-import { EditCommentComponent} from '../../components/edit-comment/edit-comment.component';
+import { EditCommentComponent } from '../../components/edit-comment/edit-comment.component';
 
 describe('PostDetailsComponent', () => {
   let component: PostDetailsComponent;
@@ -14,10 +14,18 @@ describe('PostDetailsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, ReactiveFormsModule, HttpClientTestingModule ],
-      declarations: [ PostDetailsComponent, AddCommentComponent, CommentComponent, EditCommentComponent ]
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+      ],
+      declarations: [
+        PostDetailsComponent,
+        AddCommentComponent,
+        CommentComponent,
+        EditCommentComponent,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
