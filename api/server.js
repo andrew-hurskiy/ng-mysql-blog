@@ -23,7 +23,7 @@ db.connect((err) => {
 
 // Create a new blog post
 app.post('/posts', (req, res) => {
-  const { 
+  const {
     id,
     author,
     heading,
@@ -33,21 +33,21 @@ app.post('/posts', (req, res) => {
     section3,
     sectionHeading,
     createdAt } = req.body;
-    
+
   // Validate the input data here if necessary
   const query = `INSERT INTO posts 
     (id, author, heading, subHeading, section1, section2, section3, sectionHeading, createdAt) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    
-  db.query(query, 
-    [id, author, heading, subHeading, section1, section2, section3, sectionHeading, createdAt ],
+
+  db.query(query,
+    [id, author, heading, subHeading, section1, section2, section3, sectionHeading, createdAt],
     (err, result) => {
-    if (err) {
-      res.status(500).json({ error: 'Unable to create the blog post' });
-    } else {
-      res.status(201).json({ message: 'Blog post created successfully' });
-    }    
-  });
+      if (err) {
+        res.status(500).json({ error: 'Unable to create the blog post' });
+      } else {
+        res.status(201).json({ message: 'Blog post created successfully' });
+      }
+    });
 });
 
 // Get all blog posts
@@ -82,10 +82,10 @@ app.get('/posts/:id', (req, res) => {
 
 // Update a blog post by ID
 app.put('/posts/:id', (req, res) => {
-  
-  const postId = req.params.id;  
-  
-  const { 
+
+  const postId = req.params.id;
+
+  const {
     id,
     author,
     heading,
@@ -109,19 +109,19 @@ app.put('/posts/:id', (req, res) => {
                   sectionHeading = ?,
                   createdAt = ?
                 WHERE id = ?`;
-  db.query(query, 
+  db.query(query,
     [id, author, heading, subHeading, section1, section2, section3, sectionHeading, createdAt],
     (err, result) => {
-    if (err) {
-      res.status(500).json({ error: 'Unable to update the blog post' });
-    } else {
-      if (result.affectedRows === 0) {
-        res.status(404).json({ message: 'Blog post not found' });
+      if (err) {
+        res.status(500).json({ error: 'Unable to update the blog post' });
       } else {
-        res.status(200).json({ message: 'Blog post updated successfully' });
+        if (result.affectedRows === 0) {
+          res.status(404).json({ message: 'Blog post not found' });
+        } else {
+          res.status(200).json({ message: 'Blog post updated successfully' });
+        }
       }
-    }
-  });
+    });
 });
 
 app.delete('/posts/:id', (req, res) => {
@@ -142,27 +142,27 @@ app.delete('/posts/:id', (req, res) => {
 
 // Add comment by postid
 app.post('/post/:postId/comments', (req, res) => {
-  
+
   console.log('Inside of posts comments')
-  
+
   const {
     id, content,
     user, date
   } = req.body
-  
+
   const postId = req.params.postId;
 
   const query = `INSERT INTO comments 
                 (id, content, user, date, postId) 
                 VALUES (?, ?, ?, ?, ?) 
                 WHERE postId = ?`
-                
+
   console.log('ID ', id);
   console.log('content ', content);
   console.log('user ', user);
   console.log('date ', date);
   console.log('postId ', postId);
-  
+
   db.query(query, [id, content, user, date, postId], (err, result) => {
     if (err) {
       res.status(500).json({ error: 'Unable to fetch the comments' });
@@ -177,9 +177,9 @@ app.post('/post/:postId/comments', (req, res) => {
 });
 
 app.get('/posts/:postId/comments', (req, res) => {
-  
+
   const postId = req.params.postId;
-  
+
   const query = 'SELECT * FROM comments WHERE postId = ?';
   db.query(query, [postId], (err, result) => {
     if (err) {
@@ -197,10 +197,10 @@ app.get('/posts/:postId/comments', (req, res) => {
 
 
 app.delete('/comments/:id', (req, res) => {
-  
+
   const commentId = req.params.id;
   const query = 'DELETE FROM comments WHERE id = ?';
-  
+
   db.query(query, [commentId], (err, result) => {
     if (err) {
       res.status(500).json({ error: 'Unable to delete the comment' });

@@ -6,3 +6,10 @@
 6. Dockerize app
 7. Create seed endpoint that will seed data into database
 8. Build up application with terraform on AWS
+
+
+POSTS
+C
+R
+U
+D

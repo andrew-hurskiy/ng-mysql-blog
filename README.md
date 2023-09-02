@@ -1,4 +1,14 @@
-# Angular blog
+{
+  "id": 1693648378350,
+  "author": "andriy",
+  "heading": "A2",
+  "subHeading": "A2",
+  "section1": "A2",
+  "section2": "A2",
+  "section3": "A2",
+  "sectionHeading": "A2",
+  "createdAt": "2023-09-02T09:52:58.350Z"
+}# Angular blog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.
 
