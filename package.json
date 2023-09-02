@@ -7,9 +7,6 @@
     "start": "npm run api"
   },
   "author": "Andriy",
-  "dependencies": {
-    "json-server": "^0.14.0"
-  },
   "main": "server.js",
   "license": "ISC"
 }
