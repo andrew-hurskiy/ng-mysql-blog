@@ -474,3 +474,4 @@ ASALocalRun/
 
 
 # End of https://www.gitignore.io/api/vim,node,kate,sublimetext,visualstudio,visualstudiocode
+**/package-lock.json

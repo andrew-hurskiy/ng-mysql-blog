@@ -1,4 +1,7 @@
-1. Install linter + prettifier
+1. Install linter + prettifier - Done
+2. Get read of JSON server - Doing
+
+
 2. Make all CRUD operations work with posts / comments
 3. Add Cypress tests
 4. Add some unit tests
@@ -7,9 +10,3 @@
 7. Create seed endpoint that will seed data into database
 8. Build up application with terraform on AWS
 
-
-POSTS
-C
-R
-U
-D
