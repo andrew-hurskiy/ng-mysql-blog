@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 app.use("/post", postRouter);
 app.use("/posts", postRouter);
+
 app.use("/post/:postId/comments", commentRouter);
 
 app.listen(port, () => {

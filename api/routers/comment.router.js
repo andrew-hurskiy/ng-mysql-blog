@@ -17,16 +17,16 @@ db.connect((err) => {
 // Define routes for CRUD operations on comments that belong to a post
 commentRouter.get("/", (req, res) => {
   const postId = req.params.postId;
-
   const query = "SELECT * FROM comments WHERE postId = ?";
-  db.query(query, [postId], (err, result) => {
+
+  db.query(query, [postId], (err, comments) => {
     if (err) {
       res.status(500).json({ error: "Unable to fetch the comments" });
     } else {
-      if (result.length === 0) {
+      if (comments.length === 0) {
         res.status(404).json({ message: "Comments not found" });
       } else {
-        res.status(200).json(result[0]);
+        res.status(200).json(comments);
       }
     }
   });
@@ -34,38 +34,28 @@ commentRouter.get("/", (req, res) => {
 
 commentRouter.get("/:commentId", (req, res) => {
   const postId = req.params.postId;
+  let commentId = req.params.commentId;
+  const query = "SELECT * FROM comments WHERE postId = ? AND id = ?";
 
-  const query = "SELECT * FROM comments WHERE postId = ?";
-  db.query(query, [postId], (err, result) => {
+  db.query(query, [postId, commentId], (err, comments) => {
     if (err) {
       res.status(500).json({ error: "Unable to fetch the comments" });
     } else {
-      if (result.length === 0) {
+      if (comments.length === 0) {
         res.status(404).json({ message: "Comments not found" });
       } else {
-        res.status(200).json(result[0]);
+        res.status(200).json(comments[0]);
       }
     }
   });
 });
 
 commentRouter.post("/", (req, res) => {
-  console.log("Inside of posts comments");
-
   const { id, content, user, date } = req.body;
-
   const postId = req.params.postId;
-
   const query = `INSERT INTO comments 
                 (id, content, user, date, postId) 
-                VALUES (?, ?, ?, ?, ?) 
-                WHERE postId = ?`;
-
-  console.log("ID ", id);
-  console.log("content ", content);
-  console.log("user ", user);
-  console.log("date ", date);
-  console.log("postId ", postId);
+                VALUES (?, ?, ?, ?, ?)`;
 
   db.query(query, [id, content, user, date, postId], (err, result) => {
     if (err) {
@@ -74,15 +64,14 @@ commentRouter.post("/", (req, res) => {
       if (result.length === 0) {
         res.status(404).json({ message: "Comments not found" });
       } else {
-        res.status(200).json(result[0]);
+        res.status(200).json({ message: "Comment added" });
       }
     }
   });
-  // Handle creating a new comment for a specific post (req.params.postId)
 });
 
 commentRouter.delete("/:commentId", (req, res) => {
-  const commentId = req.params.id;
+  const commentId = req.params.commentId;
   const query = "DELETE FROM comments WHERE id = ?";
 
   db.query(query, [commentId], (err, result) => {
@@ -92,11 +81,10 @@ commentRouter.delete("/:commentId", (req, res) => {
       if (result.affectedRows === 0) {
         res.status(404).json({ message: "Comment not found" });
       } else {
-        res.status(200).json({ message: "Commentdeleted successfully" });
+        res.status(200).json({ message: "Comment deleted successfully" });
       }
     }
   });
-  // Handle deleting a comment by ID for a specific post (req.params.postId)
 });
 
 module.exports = commentRouter;

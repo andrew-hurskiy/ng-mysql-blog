@@ -1,8 +1,6 @@
-1. Install linter + prettifier - Done
-2. Get read of JSON server - Doing
+2. Make all CRUD operations work with posts / comments - DOING
 
 
-2. Make all CRUD operations work with posts / comments
 3. Add Cypress tests
 4. Add some unit tests
 5. Create Jenkins file

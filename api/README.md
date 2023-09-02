@@ -1,4 +1,4 @@
-# Working with posts
+result# Working with posts
 
 ## Create POST
 
@@ -122,12 +122,23 @@ Response
 ### Request
 
 ```
+curl --location 'localhost:3000/post/AA/comments' \
+--header 'Content-Type: application/json' \
+--data '{
+    "content": "BB",
+    "user": "AAA",
+    "date": "2023-03-05",
+    "id": "DDD"
+}'
 
 ```
 
 ### Response
 
 ```
+{
+    "message": "Comment added"
+}
 
 ```
 
@@ -136,26 +147,26 @@ Response
 ### Request
 
 ```
+curl --location --request GET 'localhost:3000/post/AA/comments/DDD' \
+--header 'Content-Type: application/json' \
+--data '{
+    "content": "AA",
+    "user": "AAA",
+    "date": "2023-03-05"
+}'
 
 ```
 
 ### Response
 
 ```
-
-```
-
-## Update
-
-### Request
-
-```
-
-```
-
-### Response
-
-```
+{
+    "id": "DDD",
+    "content": "BB",
+    "user": "AAA",
+    "date": "2023-03-04T22:00:00.000Z",
+    "postId": "AA"
+}
 
 ```
 
@@ -164,11 +175,21 @@ Response
 ### Request
 
 ```
+curl --location --request DELETE 'localhost:3000/post/AA/comments/CCC' \
+--header 'Content-Type: application/json' \
+--data '{
+    "content": "AA",
+    "user": "AAA",
+    "date": "2023-03-05"
+}'
 
 ```
 
 ### Response
 
 ```
+{
+    "message": "Comment deleted successfully"
+}
 
 ```

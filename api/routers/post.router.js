@@ -30,14 +30,14 @@ postRouter.get("/:postId", (req, res) => {
   const postId = req.params.postId;
   const query = "SELECT * FROM posts WHERE id = ?";
 
-  db.query(query, [postId], (err, result) => {
+  db.query(query, [postId], (err, posts) => {
     if (err) {
       res.status(500).json({ error: "Unable to fetch the blog post" });
     } else {
-      if (result.length === 0) {
+      if (posts.length === 0) {
         res.status(404).json({ message: "Blog post not found" });
       } else {
-        res.status(200).json(result[0]);
+        res.status(200).json(posts[0]);
       }
     }
   });
@@ -74,7 +74,7 @@ postRouter.post("/", (req, res) => {
       sectionHeading,
       createdAt,
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         res.status(500).json({ error: "Unable to create the blog post" });
       } else {
@@ -124,6 +124,7 @@ postRouter.put("/:postId", (req, res) => {
       section3,
       sectionHeading,
       createdAt,
+      postId
     ],
     (err, result) => {
       if (err) {
