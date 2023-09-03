@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  createBlog() {
+  createPost() {
     this.router.navigateByUrl('/post/create');
   }
 }

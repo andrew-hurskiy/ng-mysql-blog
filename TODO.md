@@ -1,6 +1,5 @@
-2. Make all CRUD operations work with posts / comments - DOING
-3. Change angular to work with all our endpoints properly.... DOING
-
+1. Add ability to Edit post - Doing
+2. Add ability to delete post - Done
 
 3. Add Cypress tests
 4. Add some unit tests

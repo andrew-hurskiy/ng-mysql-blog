@@ -20,6 +20,8 @@ import { PostService } from './services/post.service';
 import { CommentService } from './services/comment.service';
 import { EditCommentComponent } from './components/edit-comment/edit-comment.component';
 import { CreatePostComponent } from './views/create-post/create-post.component';
+import { EditPostComponent } from './views/edit-post/edit-post.component';
+
 import { LoginComponent } from './views/login/login.component';
 import { ForgetPwdComponent } from './views/forget-pwd/forget-pwd.component';
 
@@ -32,6 +34,7 @@ import { ForgetPwdComponent } from './views/forget-pwd/forget-pwd.component';
     AddCommentComponent,
     EditCommentComponent,
     CreatePostComponent,
+    EditPostComponent,
     LoginComponent,
     ForgetPwdComponent,
   ],

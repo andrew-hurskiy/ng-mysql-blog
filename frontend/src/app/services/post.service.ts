@@ -36,6 +36,15 @@ export class PostService {
       catchError(this.handleError<Post>(`getPost id=${id}`)),
     );
   }
+  
+  deletePost(id: any): Observable<Post> {
+    const url = `${apiURL}${id}`
+    
+    return this.http.delete<Post>(url).pipe(
+      tap((_) => this.log(`deleted post by id=${id}`)),
+      catchError(this.handleError<Post>(`deletePost id=${id}`)),
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

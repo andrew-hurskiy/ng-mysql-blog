@@ -4,6 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import { PostDetailsComponent } from './views/post-details/post-details.component';
 import { EditCommentComponent } from './components/edit-comment/edit-comment.component';
 import { CreatePostComponent } from './views/create-post/create-post.component';
+import { EditPostComponent } from './views/edit-post/edit-post.component';
 import { LoginComponent } from './views/login/login.component';
 import { ForgetPwdComponent } from './views/forget-pwd/forget-pwd.component';
 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'post/create',
     component: CreatePostComponent,
+  },
+  {
+    path: 'post/edit/:id',
+    component: EditPostComponent
   },
   {
     path: 'post/details/:id',
