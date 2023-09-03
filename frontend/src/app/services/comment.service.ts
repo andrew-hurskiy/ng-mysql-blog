@@ -32,8 +32,6 @@ export class CommentService {
   }
 
   deleteCommentById(id: any): Observable<Comment> {
-    
-    console.log('Delete comment by id')
     const url = `${apiURL}/comment/${id}`;
     return this.http.delete<Comment>(url).pipe(
       tap((_) => this.log(`deleted comment id=${id}`)),

@@ -9,37 +9,32 @@ const apiURL = 'http://localhost:3000/posts/';
 @Injectable({
   providedIn: 'root',
 })
-
 export class PostService {
   constructor(private http: HttpClient) {}
 
   addPost(payload: any): Observable<Post> {
     const url = `${apiURL}`;
 
-    return this.http.post<any>(url, payload)
-      .pipe(
-        tap((_) => this.log(`fetched post by payload=${payload}`)),
-        catchError(this.handleError<Post>(`getPost id=${payload}`)),
-      );
+    return this.http.post<any>(url, payload).pipe(
+      tap((_) => this.log(`fetched post by payload=${payload}`)),
+      catchError(this.handleError<Post>(`getPost id=${payload}`)),
+    );
   }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(apiURL)
-      .pipe(
-        tap(() => this.log('Posts fetched')),
-        catchError(this.handleError('getPosts', [])),
-      );
+    return this.http.get<Post[]>(apiURL).pipe(
+      tap(() => this.log('Posts fetched')),
+      catchError(this.handleError('getPosts', [])),
+    );
   }
 
   getPost(id: any): Observable<Post> {
-    
     const url = `${apiURL}${id}`;
-    
-    return this.http.get<Post>(url)
-      .pipe(
-        tap((_) => this.log(`fetched post by id=${id}`)),
-        catchError(this.handleError<Post>(`getPost id=${id}`)),
-      );
+
+    return this.http.get<Post>(url).pipe(
+      tap((_) => this.log(`fetched post by id=${id}`)),
+      catchError(this.handleError<Post>(`getPost id=${id}`)),
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

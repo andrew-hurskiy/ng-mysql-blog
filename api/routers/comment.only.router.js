@@ -1,14 +1,12 @@
 const express = require("express");
 const commentRouter = express.Router({ mergeParams: true });
-const db = require('../dal/db')
-
+const db = require("../dal/db");
 
 commentRouter.get("/:commentId", (req, res) => {
-  const postId = req.params.postId;
   let commentId = req.params.commentId;
-  const query = "SELECT * FROM comments WHERE postId = ? AND id = ?";
+  const query = "SELECT * FROM comments WHERE id = ?";
 
-  db.query(query, [postId, commentId], (err, comments) => {
+  db.query(query, [commentId], (err, comments) => {
     if (err) {
       res.status(500).json({ error: "Unable to fetch the comments" });
     } else {
@@ -41,16 +39,12 @@ commentRouter.delete("/:commentId", (req, res) => {
 commentRouter.put("/:commentId", (req, res) => {
   const commentId = req.params.commentId;
   const { content, date } = req.body;
-  
-  console.log('Update comment: comment id ', commentId);
-  console.log('Content',content)
-  console.log('Date ', date);
 
   const query = `UPDATE comments 
                 SET 
                   content = ?,
                   date = ?
-                WHERE commentId = ?`;
+                WHERE id = ?`;
   db.query(query, [content, date, commentId], (err, result) => {
     if (err) {
       res.status(500).json({ error: "Unable to update comment" });

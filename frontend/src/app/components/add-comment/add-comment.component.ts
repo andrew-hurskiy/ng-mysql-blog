@@ -40,7 +40,7 @@ export class AddCommentComponent implements OnInit {
     this.comment = this.commentForm.value;
     this.comment.date = this.formatCurrentDate();
     this.comment.id = uuidv4();
-    
+
     this.api.addCommentByPostId(this.comment, this.post.id).subscribe(
       () => {
         this.modalService.dismissAll();

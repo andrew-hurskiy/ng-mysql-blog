@@ -1,7 +1,6 @@
 const express = require("express");
 const commentRouter = express.Router({ mergeParams: true });
-const db = require('../dal/db')
-
+const db = require("../dal/db");
 
 commentRouter.get("/", (req, res) => {
   console.log("Get all comments for specific post...");
@@ -16,24 +15,6 @@ commentRouter.get("/", (req, res) => {
         res.status(404).json({ message: "Comments not found" });
       } else {
         res.status(200).json(comments);
-      }
-    }
-  });
-});
-
-commentRouter.get("/:commentId", (req, res) => {
-  const postId = req.params.postId;
-  let commentId = req.params.commentId;
-  const query = "SELECT * FROM comments WHERE postId = ? AND id = ?";
-
-  db.query(query, [postId, commentId], (err, comments) => {
-    if (err) {
-      res.status(500).json({ error: "Unable to fetch the comments" });
-    } else {
-      if (comments.length === 0) {
-        res.status(404).json({ message: "Comments not found" });
-      } else {
-        res.status(200).json(comments[0]);
       }
     }
   });

@@ -1,7 +1,6 @@
 const express = require("express");
 const postRouter = express.Router();
-const db = require('../dal/db')
-
+const db = require("../dal/db");
 
 // Define routes for CRUD operations on posts
 postRouter.get("/", (req, res) => {
