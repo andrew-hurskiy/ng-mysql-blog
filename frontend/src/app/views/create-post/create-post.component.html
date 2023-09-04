@@ -16,6 +16,7 @@
               type="text"
               placeholder="Heading"
               formControlName="heading"
+              test-data="heading"
             />
             <br />
             <label for="exampleFormControlTextarea1"
@@ -26,6 +27,7 @@
               type="text"
               placeholder="Sub - Heading"
               formControlName="subHeading"
+              test-data="subHeading"
             />
             <br />
             <div class="form-group">
@@ -36,6 +38,7 @@
                 placeholder="Enter your text here"
                 rows="3"
                 formControlName="section1"
+                test-data="section1"
               ></textarea>
             </div>
             <div class="form-group">
@@ -46,6 +49,7 @@
                 placeholder="Enter your text here"
                 rows="3"
                 formControlName="section2"
+                test-data="section2"
               ></textarea>
             </div>
           </div>
@@ -56,6 +60,7 @@
               type="text"
               placeholder="Section - Heading"
               formControlName="sectionHeading"
+              test-data="sectionHeading"
             />
             <br />
 
@@ -67,6 +72,7 @@
                 placeholder="Enter your text here"
                 rows="3"
                 formControlName="section3"
+                test-data="section3"
               ></textarea>
             </div>
 
@@ -81,8 +87,9 @@
                 type="submit"
                 class="btn btn-primary"
                 [disabled]="!blogForm.valid"
+                test-data="submitPost"
               >
-                Submit Blog
+                Submit Post
               </button>
             </div>
           </div>
