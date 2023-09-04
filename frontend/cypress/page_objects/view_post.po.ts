@@ -1,17 +1,14 @@
 class ViewPostPage {
+  backButton = () => cy.get('button[data-test="backFromPost"]');
+  deletePostButton = () => cy.get('button[data-test="delete-post"]');
 
-    backButton = () => cy.get('button[data-test="backFromPost"]')
-    deletePostButton = () => cy.get('button[data-test="delete-post"]')
-   
-    goBack(){
-        this.backButton().click();
-    }
+  goBack() {
+    this.backButton().click();
+  }
 
-    deletePost(){
-        this.deletePostButton().click();
-    }
-
-
+  deletePost() {
+    this.deletePostButton().click();
+  }
 }
 
 export default new ViewPostPage();

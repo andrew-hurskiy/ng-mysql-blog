@@ -30,7 +30,11 @@
       <ng-template #noComments>There are no comments.</ng-template>
       <div class="btn-toolbar mt-2 text-right">
         <div class="btn-group" aria-label="Main buttons">
-          <button class="btn btn-secondary" [routerLink]="'/home'" data-test="backFromPost">
+          <button
+            class="btn btn-secondary"
+            [routerLink]="'/home'"
+            data-test="backFromPost"
+          >
             Back
           </button>
           &nbsp;
@@ -42,7 +46,11 @@
             Edit Post
           </button>
           &nbsp;
-          <button class="btn btn-danger" (click)="deletePost()" data-test="delete-post">
+          <button
+            class="btn btn-danger"
+            (click)="deletePost()"
+            data-test="delete-post"
+          >
             Delete Post
           </button>
         </div>

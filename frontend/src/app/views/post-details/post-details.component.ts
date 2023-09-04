@@ -32,7 +32,7 @@ export class PostDetailsComponent implements OnInit {
     private apiPost: PostService,
     private apiComment: CommentService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -58,23 +58,21 @@ export class PostDetailsComponent implements OnInit {
       },
     );
   }
-  
-  deletePost(){
-    
+
+  deletePost() {
     if (this.hasComments()) {
       alert('This post has comments. Remove them first to delete post');
-      return
+      return;
     }
     this.apiPost.deletePost(this.post.id).subscribe(() => {
       this.refresh();
       this.router.navigate(['/home']);
-    })
+    });
   }
-  
-  editPost(){
-    console.log('Editing post')
+
+  editPost() {
+    console.log('Editing post');
   }
-  
 
   openModal(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
@@ -83,13 +81,13 @@ export class PostDetailsComponent implements OnInit {
   closeModal() {
     this.modalService.dismissAll();
   }
-  
+
   private refresh() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
   }
-  
-  private hasComments(){
+
+  private hasComments() {
     return this.comments.length > 0;
   }
 }
