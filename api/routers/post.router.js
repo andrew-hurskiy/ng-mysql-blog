@@ -1,4 +1,4 @@
-const express = require("express");
+  const express = require("express");
 const postRouter = express.Router();
 const db = require("../dal/db");
 
@@ -44,6 +44,8 @@ postRouter.post("/", (req, res) => {
     createdAt,
   } = req.body;
 
+  console.log('Request body is', JSON.stringify(req.body));
+
   // Validate the input data here if necessary
   const query = `INSERT INTO posts 
     (id, author, heading, subHeading, section1, section2, section3, sectionHeading, createdAt) 
@@ -64,8 +66,10 @@ postRouter.post("/", (req, res) => {
     ],
     (err) => {
       if (err) {
+        console.log('Error is', err);
         res.status(500).json({ error: "Unable to create the blog post" });
       } else {
+        console.log('Result of transaction is', res);
         res.status(201).json({ message: "Blog post created successfully" });
       }
     },

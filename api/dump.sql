@@ -9,14 +9,14 @@ USE blog;
 DROP TABLE IF EXISTS posts;
 
 CREATE TABLE posts (
-  id varchar(30) not null,
-  author varchar(30),
-  heading varchar(30),
-  subHeading varchar(30),
-  section1 varchar(100),
-  section2 varchar(100),
-  section3 varchar(100),
-  sectionHeading varchar(30),
+  id varchar(255) not null,
+  author varchar(255),
+  heading varchar(255),
+  subHeading varchar(255),
+  section1 varchar(255),
+  section2 varchar(255),
+  section3 varchar(255),
+  sectionHeading varchar(255),
   createdAt datetime,
   PRIMARY KEY (id)
 );
@@ -24,11 +24,11 @@ CREATE TABLE posts (
 DROP TABLE IF EXISTS comments;
 
 CREATE TABLE comments (
-  id varchar(50) not null,
+  id varchar(255) not null,
   content varchar(255),
-  user varchar(50),
+  user varchar(255),
   date date,
-  postId varchar(50) not null,
+  postId varchar(255) not null,
   FOREIGN KEY (postId) REFERENCES posts(id),
   PRIMARY KEY(id)
 );
