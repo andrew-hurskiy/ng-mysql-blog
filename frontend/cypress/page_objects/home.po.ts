@@ -1,6 +1,8 @@
 class HomePage {
   createPostButton = () => cy.get('button[test-data="create-post"]');
   postCards = () => cy.get('div[test-data="post-card"]');
+  title = () => cy.get('h1');
+  subTitle = () => cy.get('p.lead');
 
   startCreatingPost() {
     this.createPostButton().click();
