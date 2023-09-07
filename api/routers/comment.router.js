@@ -40,21 +40,6 @@ commentRouter.post("/", (req, res) => {
   });
 });
 
-commentRouter.delete("/:commentId", (req, res) => {
-  const commentId = req.params.commentId;
-  const query = "DELETE FROM comments WHERE id = ?";
 
-  db.query(query, [commentId], (err, result) => {
-    if (err) {
-      res.status(500).json({ error: "Unable to delete the comment" });
-    } else {
-      if (result.affectedRows === 0) {
-        res.status(404).json({ message: "Comment not found" });
-      } else {
-        res.status(200).json({ message: "Comment deleted successfully" });
-      }
-    }
-  });
-});
 
 module.exports = commentRouter;

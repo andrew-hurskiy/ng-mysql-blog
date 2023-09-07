@@ -1,5 +1,8 @@
+1. Cypress - API clear up - doing
+2. More specific tests for CRUD posts 
+3. Add tests for CRUD of comments 
 
-3. Add Cypress tests - Doing
+
 4. Add some unit tests
 5. Create Jenkins file
 6. Dockerize app
